@@ -1,21 +1,29 @@
 <template>
   <div>
     <h1>This is Home page</h1>
-    <KossieCoder title="home title" name="Kossie Coder" />
+    <form action="">
+      <InputField :name="name" @update-name="updateName" />
+      <br><button>Submit</button>
+    </form>
+    {{ name }}
   </div>
+  <!-- 자식 컴포넌트에서 이벤트로 받아온 @update-name 값을 받아와서 업데이트 한다.  -->
 </template>
 
 <script>
-import KossieCoder from '@/components/KossieCoder.vue';
-
+import InputField from '@/components/InputField.vue';
 export default {
   components: {
-    KossieCoder
+    InputField
   },
-
   data() {
     return {
-      name: 'Kossie Coder',
+        name: ''
+    }
+  },
+  methods: {
+    updateName(name) {
+      this.name = name;
     }
   }
 }
